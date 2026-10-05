@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Abbas K | Personal Website</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%9A%80%3C/text%3E%3C/svg%3E">
+<title>Abbas Kehar | Personal Website</title>
 <!-- EDIT: description shown in Google results -->
-<meta name="description" content="Personal website of Abbas K.">
+<meta name="description" content="Personal website of Abbas Kehar.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
@@ -57,7 +58,7 @@ nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,
 .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
 .hello{color:var(--accent);font-weight:700;margin-bottom:10px;opacity:0;animation:rise .8s .1s forwards}
 /* Letter-by-letter name reveal (letters are wrapped by JS) */
-.hero h1{font-size:clamp(3.4rem,10vw,7rem);letter-spacing:-.02em}
+.hero h1{font-size:clamp(3rem,8.5vw,5.8rem);letter-spacing:-.02em}
 .hero h1 .ch{display:inline-block;opacity:0;transform:translateY(60%) rotate(6deg);animation:letter .7s cubic-bezier(.2,.8,.2,1) forwards}
 .tagline{font-size:1.25rem;color:var(--muted);margin:18px 0 8px;max-width:30ch;opacity:0;animation:rise .8s .9s forwards}
 .typed{color:var(--text);font-weight:700;border-right:2px solid var(--accent);padding-right:4px;animation:blink 1s steps(1) infinite}
@@ -226,13 +227,64 @@ footer{text-align:center;padding:30px 0;color:var(--muted);font-size:.92rem;bord
 .presence.on i{background:#2fb36b;animation:pulse 2s infinite}
 @media(max-width:400px){.presence{padding:8px}.presence b{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
 </style>
+<style>
+/* ========== SHOW PROJECT ========== */
+.work{cursor:pointer}
+.show{display:inline-block;margin-top:14px;font-weight:700;font-size:.9rem;color:var(--accent);transition:transform .25s}
+.work:hover .show{transform:translateX(6px)}
+.tag + .show{display:block}
+dialog.pm{width:min(720px,92vw);max-height:90vh;overflow:auto;padding:0;border:1px solid var(--line);border-radius:22px;background:var(--card);color:var(--text);box-shadow:0 40px 80px -30px rgba(0,0,0,.7)}
+dialog.pm::backdrop{background:rgba(8,12,20,.6);backdrop-filter:blur(4px)}
+dialog.pm[open]{animation:rise .35s cubic-bezier(.2,.8,.2,1)}
+.pm img{width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--bg2)}
+.pm-b{padding:26px 28px 30px}
+.pm-b h3{font-size:1.8rem;margin:4px 0 10px}
+.pm-b p{color:var(--muted)}
+.pm-b .btn{margin-top:22px}
+.pm-x{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--text);font-size:1.2rem;cursor:pointer;z-index:2}
+.pm-x:hover{background:var(--accent);color:#fff}
+</style>
+<style>
+/* ========== UPGRADE: MORE ANIMATION ========== */
+#prog{position:fixed;top:0;left:0;right:0;height:3px;z-index:70;background:linear-gradient(90deg,var(--accent),var(--accent2));transform:scaleX(0);transform-origin:left}
+#glow{position:fixed;left:0;top:0;width:420px;height:420px;border-radius:50%;pointer-events:none;z-index:40;opacity:0;transition:opacity .4s;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 20%,transparent),transparent 65%)}
+@media(hover:none){#glow{display:none}}
+.hero{overflow:hidden}
+.hero>.wrap{position:relative;z-index:1}
+.hero::before,.hero::after{content:"";position:absolute;z-index:0;border-radius:50%;filter:blur(70px);opacity:.3;pointer-events:none}
+.hero::before{width:380px;height:380px;background:var(--accent);top:-90px;left:-110px;animation:drift 14s ease-in-out infinite}
+.hero::after{width:320px;height:320px;background:var(--accent2);bottom:-70px;right:-70px;animation:drift 18s ease-in-out infinite reverse}
+@keyframes drift{50%{transform:translate(70px,44px) scale(1.18)}}
+.btn.primary{position:relative;overflow:hidden}
+.btn.primary::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg)}
+.btn.primary:hover::after{animation:shine .8s}
+@keyframes shine{to{left:140%}}
+section:not(.rb) h2::after{content:"";display:block;height:4px;width:0;margin-top:10px;border-radius:4px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .9s .3s cubic-bezier(.2,.8,.2,1)}
+.visible h2::after,h2.visible::after{width:70px}
+.card:hover,.work:hover{transform:perspective(900px) translateY(-6px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))}
+.card.tilting,.work.tilting{transition:transform .12s ease-out,border-color .3s,box-shadow .3s;transition-delay:0s!important}
+.marq{overflow:hidden;border-block:1px solid var(--line);background:var(--card);padding:18px 0}
+.marq-t{display:flex;gap:44px;width:max-content;animation:marq 30s linear infinite}
+.marq:hover .marq-t{animation-play-state:paused}
+.marq-t span{font:700 1.6rem var(--head);white-space:nowrap;color:var(--muted);transition:color .3s}
+.marq-t span:hover{color:var(--accent)}
+.marq-t b{color:var(--accent2);font-weight:400}
+@keyframes marq{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.marq-t,.hero::before,.hero::after{animation:none}}
+.up{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:60;width:48px;height:48px;border-radius:50%;border:0;background:var(--accent);color:#fff;font-size:1.3rem;cursor:pointer;box-shadow:0 12px 24px -10px var(--accent);opacity:0;transform:translateY(20px) scale(.8);pointer-events:none;transition:opacity .4s,transform .4s}
+.up.vis{opacity:1;transform:none;pointer-events:auto}
+.up:hover{transform:translateY(-4px)}
+</style>
 </head>
 <body>
+<div id="prog" aria-hidden="true"></div>
+<div id="glow" aria-hidden="true"></div>
+<button class="up" id="toTop" type="button" aria-label="Back to top">↑</button>
 
 <!-- ========== NAVIGATION ========== -->
 <nav>
   <div class="wrap nav-in">
-    <a class="logo" href="#home">Abbas<span>.</span>K</a>
+    <a class="logo" href="#home">Abbas<span>.</span>Kehar</a>
     <ul class="links" id="links">
       <li><a href="#rb-story">Robot</a></li>
       <li><a href="#about">About</a></li>
@@ -256,7 +308,7 @@ footer{text-align:center;padding:30px 0;color:var(--muted);font-size:.92rem;bord
   <div class="hero-grid">
     <div>
       <p class="hello">Hello, I'm</p>
-      <h1 id="name" aria-label="Abbas K">Abbas K</h1>
+      <h1 id="name" aria-label="Abbas Kehar">Abbas Kehar</h1>
       <!-- EDIT: tagline. The rotating words are in the script at the bottom (WORDS) -->
       <p class="tagline">I'm a <span class="typed" id="typed"></span></p>
       <div class="cta">
@@ -268,7 +320,7 @@ footer{text-align:center;padding:30px 0;color:var(--muted);font-size:.92rem;bord
       <span class="dots" aria-hidden="true"></span><span class="dots b" aria-hidden="true"></span><span class="spark" aria-hidden="true">✦</span>
       <span class="chip c1"><i>💻</i>Developer</span><span class="chip c2"><i>🎨</i>Designer</span>
       <!-- PHOTO: embedded in the PHOTO variable at the bottom of this file -->
-      <img data-photo alt="Portrait of Abbas K" width="360" height="450">
+      <img data-photo alt="Portrait of Abbas Kehar" width="360" height="450">
     </div>
   </div>
 </div>
@@ -280,7 +332,7 @@ footer{text-align:center;padding:30px 0;color:var(--muted);font-size:.92rem;bord
       <p class="hs-p">Clean code, sensible layouts, and pages that work on every screen.</p>
       <div class="hs-cta"><a href="#work" class="btn primary">See the work</a></div>
     </div>
-    <figure class="shot"><img data-photo alt="Portrait of Abbas K" width="360" height="450"></figure>
+    <figure class="shot"><img data-photo alt="Portrait of Abbas Kehar" width="360" height="450"></figure>
   </div>
 </div>
 <div class="hslide" role="group" aria-roledescription="slide" aria-label="3 of 3">
@@ -291,7 +343,7 @@ footer{text-align:center;padding:30px 0;color:var(--muted);font-size:.92rem;bord
       <p class="hs-p">Simple layouts and visuals that are easy to use.</p>
       <div class="hs-cta"><a href="#contact" class="btn primary">Let's talk</a></div>
     </div>
-    <figure class="shot"><img data-photo alt="Portrait of Abbas K" width="360" height="450"></figure>
+    <figure class="shot"><img data-photo alt="Portrait of Abbas Kehar" width="360" height="450"></figure>
   </div>
 </div>
 </div>
@@ -302,6 +354,8 @@ footer{text-align:center;padding:30px 0;color:var(--muted);font-size:.92rem;bord
 </div>
 </div>
 </header>
+
+<div class="marq" aria-hidden="true"><div class="marq-t"><span>Web Development</span><b>✦</b><span>UI Design</span><b>✦</b><span>Problem Solving</span><b>✦</b><span>Communication</span><b>✦</b><span>Clean Code</span><b>✦</b><span>Responsive Layouts</span><b>✦</b><span>Web Development</span><b>✦</b><span>UI Design</span><b>✦</b><span>Problem Solving</span><b>✦</b><span>Communication</span><b>✦</b><span>Clean Code</span><b>✦</b><span>Responsive Layouts</span><b>✦</b></div></div>
 
 <!-- ========== ROBOT ASSEMBLY (scroll animation) ========== -->
 <section class="rb" id="rb-story" aria-label="Robot assembly animation">
@@ -350,7 +404,7 @@ footer{text-align:center;padding:30px 0;color:var(--muted);font-size:.92rem;bord
 <section class="about" id="about">
   <div class="wrap about-grid">
     <!-- PHOTO: same embedded photo -->
-    <img class="reveal" data-photo alt="Abbas K smiling" loading="lazy">
+    <img class="reveal" data-photo alt="Abbas Kehar smiling" loading="lazy">
     <div class="reveal">
       <h2>About me</h2>
       <!-- EDIT: write your own bio -->
@@ -370,7 +424,7 @@ footer{text-align:center;padding:30px 0;color:var(--muted);font-size:.92rem;bord
 <section id="skills">
   <div class="wrap">
     <h2 class="reveal">What I do</h2>
-    <p class="lead reveal">EDIT: a line about your services. Change the icons, titles, text and --lvl (skill level, 0% to 100%) in each card.</p>
+    <p class="lead reveal">Here is what I can help you with.</p>
     <div class="cards">
       <article class="card reveal" style="--lvl:90%"><div class="ic">💻</div><h3>Web development</h3><p>Fast, clean websites that work on every screen.</p><div class="bar"><i></i></div></article>
       <article class="card reveal" style="--lvl:80%"><div class="ic">🎨</div><h3>Design</h3><p>Simple layouts and visuals that are easy to use.</p><div class="bar"><i></i></div></article>
@@ -384,15 +438,15 @@ footer{text-align:center;padding:30px 0;color:var(--muted);font-size:.92rem;bord
 <section id="work" style="background:var(--bg2)">
   <div class="wrap">
     <h2 class="reveal">Selected work</h2>
-    <p class="lead reveal">EDIT: swap each placeholder image URL for your own screenshot (for example images/project1.jpg) and update the text.</p>
+    <p class="lead reveal">A few things I have built. Click any project to see the details.</p>
     <div class="car reveal" style="--dur:4.5s" role="region" aria-roledescription="carousel" aria-label="Selected projects">
     <div class="car-viewport" data-pane><div class="car-track">
-      <a class="work" href="#" style="text-decoration:none"><div class="thumb"><img alt="Project one" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 400'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%232f7f79'/%3E%3Cstop offset='1' stop-color='%23c28a3c'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='640' height='400' fill='url%28%23g%29'/%3E%3Ccircle cx='520' cy='80' r='90' fill='white' opacity='.12'/%3E%3Ccircle cx='110' cy='340' r='130' fill='white' opacity='.1'/%3E%3Crect x='200' y='140' width='240' height='120' rx='14' fill='white' opacity='.85'/%3E%3Crect x='220' y='165' width='120' height='12' rx='6' fill='%232f7f79'/%3E%3Crect x='220' y='190' width='190' height='8' rx='4' fill='%23c28a3c' opacity='.6'/%3E%3Crect x='220' y='210' width='160' height='8' rx='4' fill='%23c28a3c' opacity='.6'/%3E%3C/svg%3E"></div><div class="t"><h3>Project One</h3><p>A short description of what this project is and what you did.</p><span class="tag">Web · 2026</span></div></a>
-      <a class="work" href="#" style="text-decoration:none"><div class="thumb"><img alt="Project two" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 400'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23c28a3c'/%3E%3Cstop offset='1' stop-color='%232f7f79'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='640' height='400' fill='url%28%23g%29'/%3E%3Ccircle cx='520' cy='80' r='90' fill='white' opacity='.12'/%3E%3Ccircle cx='110' cy='340' r='130' fill='white' opacity='.1'/%3E%3Crect x='200' y='140' width='240' height='120' rx='14' fill='white' opacity='.85'/%3E%3Crect x='220' y='165' width='120' height='12' rx='6' fill='%23c28a3c'/%3E%3Crect x='220' y='190' width='190' height='8' rx='4' fill='%232f7f79' opacity='.6'/%3E%3Crect x='220' y='210' width='160' height='8' rx='4' fill='%232f7f79' opacity='.6'/%3E%3C/svg%3E"></div><div class="t"><h3>Project Two</h3><p>Explain the problem you solved and the result you got.</p><span class="tag">Design · 2026</span></div></a>
-      <a class="work" href="#" style="text-decoration:none"><div class="thumb"><img alt="Project three" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 400'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%233b5b8c'/%3E%3Cstop offset='1' stop-color='%235cc2b8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='640' height='400' fill='url%28%23g%29'/%3E%3Ccircle cx='520' cy='80' r='90' fill='white' opacity='.12'/%3E%3Ccircle cx='110' cy='340' r='130' fill='white' opacity='.1'/%3E%3Crect x='200' y='140' width='240' height='120' rx='14' fill='white' opacity='.85'/%3E%3Crect x='220' y='165' width='120' height='12' rx='6' fill='%233b5b8c'/%3E%3Crect x='220' y='190' width='190' height='8' rx='4' fill='%235cc2b8' opacity='.6'/%3E%3Crect x='220' y='210' width='160' height='8' rx='4' fill='%235cc2b8' opacity='.6'/%3E%3C/svg%3E"></div><div class="t"><h3>Project Three</h3><p>Mention the tools you used and what you learned.</p><span class="tag">App · 2025</span></div></a>
-      <a class="work" href="#" style="text-decoration:none"><div class="thumb"><img alt="Project four" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 400'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237a4e9c'/%3E%3Cstop offset='1' stop-color='%23c28a3c'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='640' height='400' fill='url%28%23g%29'/%3E%3Ccircle cx='520' cy='80' r='90' fill='white' opacity='.12'/%3E%3Ccircle cx='110' cy='340' r='130' fill='white' opacity='.1'/%3E%3Crect x='200' y='140' width='240' height='120' rx='14' fill='white' opacity='.85'/%3E%3Crect x='220' y='165' width='120' height='12' rx='6' fill='%237a4e9c'/%3E%3Crect x='220' y='190' width='190' height='8' rx='4' fill='%23c28a3c' opacity='.6'/%3E%3Crect x='220' y='210' width='160' height='8' rx='4' fill='%23c28a3c' opacity='.6'/%3E%3C/svg%3E"></div><div class="t"><h3>Project Four</h3><p>Add a link to the live version or source code.</p><span class="tag">Web · 2025</span></div></a>
-      <a class="work" href="#" style="text-decoration:none"><div class="thumb"><img alt="Project five" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 400'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23b5543a'/%3E%3Cstop offset='1' stop-color='%23e0b061'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='640' height='400' fill='url%28%23g%29'/%3E%3Ccircle cx='520' cy='80' r='90' fill='white' opacity='.12'/%3E%3Ccircle cx='110' cy='340' r='130' fill='white' opacity='.1'/%3E%3Crect x='200' y='140' width='240' height='120' rx='14' fill='white' opacity='.85'/%3E%3Crect x='220' y='165' width='120' height='12' rx='6' fill='%23b5543a'/%3E%3Crect x='220' y='190' width='190' height='8' rx='4' fill='%23e0b061' opacity='.6'/%3E%3Crect x='220' y='210' width='160' height='8' rx='4' fill='%23e0b061' opacity='.6'/%3E%3C/svg%3E"></div><div class="t"><h3>Project Five</h3><p>Describe who the project was for and why it mattered.</p><span class="tag">Branding · 2025</span></div></a>
-      <a class="work" href="#" style="text-decoration:none"><div class="thumb"><img alt="Project six" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 400'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%232f7f79'/%3E%3Cstop offset='1' stop-color='%233b5b8c'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='640' height='400' fill='url%28%23g%29'/%3E%3Ccircle cx='520' cy='80' r='90' fill='white' opacity='.12'/%3E%3Ccircle cx='110' cy='340' r='130' fill='white' opacity='.1'/%3E%3Crect x='200' y='140' width='240' height='120' rx='14' fill='white' opacity='.85'/%3E%3Crect x='220' y='165' width='120' height='12' rx='6' fill='%232f7f79'/%3E%3Crect x='220' y='190' width='190' height='8' rx='4' fill='%233b5b8c' opacity='.6'/%3E%3Crect x='220' y='210' width='160' height='8' rx='4' fill='%233b5b8c' opacity='.6'/%3E%3C/svg%3E"></div><div class="t"><h3>Project Six</h3><p>Keep it to one or two sentences.</p><span class="tag">Web · 2024</span></div></a>
+      <a class="work" href="#" style="text-decoration:none"><div class="thumb"><img alt="Project one" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNDAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMyZjdmNzkiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxZDRmNmUiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48c3R5bGU+QGtleWZyYW1lcyBmezUwJXt0cmFuc2Zvcm06dHJhbnNsYXRlWSgtOHB4KX19Lnd7YW5pbWF0aW9uOmYgNXMgZWFzZS1pbi1vdXQgaW5maW5pdGV9PC9zdHlsZT48cmVjdCB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQwMCIgZmlsbD0idXJsKCNnKSIvPjxjaXJjbGUgY3g9IjU3MCIgY3k9IjUwIiByPSI5MCIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjEyIi8+PGNpcmNsZSBjeD0iNjAiIGN5PSIzNzAiIHI9IjcwIiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIuMTIiLz48ZyBjbGFzcz0idyI+PHJlY3QgeD0iODAiIHk9IjU1IiB3aWR0aD0iNDgwIiBoZWlnaHQ9IjI5MCIgcng9IjE2IiBmaWxsPSIjZmZmIi8+PHBhdGggZD0iTTgwIDcxYTE2IDE2IDAgMDExNi0xNmg0NDhhMTYgMTYgMCAwMTE2IDE2djE0SDgweiIgZmlsbD0iI2VlZjBmNCIvPjxjaXJjbGUgY3g9IjEwMiIgY3k9IjcwIiByPSI1IiBmaWxsPSIjZmY2YjZiIi8+PGNpcmNsZSBjeD0iMTIwIiBjeT0iNzAiIHI9IjUiIGZpbGw9IiNmZmQxNjYiLz48Y2lyY2xlIGN4PSIxMzgiIGN5PSI3MCIgcj0iNSIgZmlsbD0iIzRlY2I3MSIvPjxyZWN0IHg9Ijk2IiB5PSIxMDAiIHdpZHRoPSI4NiIgaGVpZ2h0PSIyMzAiIHJ4PSIxMCIgZmlsbD0iIzJmN2Y3OSIgb3BhY2l0eT0iLjE2Ii8+PHJlY3QgeD0iMTk4IiB5PSIxMDAiIHdpZHRoPSIxMDYiIGhlaWdodD0iNTgiIHJ4PSIxMCIgZmlsbD0iIzJmN2Y3OSIgb3BhY2l0eT0iLjE4Ii8+PHJlY3QgeD0iMjEwIiB5PSIxMTYiIHdpZHRoPSI1MCIgaGVpZ2h0PSI4IiByeD0iNCIgZmlsbD0iIzJmN2Y3OSIvPjxyZWN0IHg9IjIxMCIgeT0iMTMyIiB3aWR0aD0iNzYiIGhlaWdodD0iMTQiIHJ4PSI1IiBmaWxsPSIjMWQ0ZjZlIi8+PHJlY3QgeD0iMzE2IiB5PSIxMDAiIHdpZHRoPSIxMDYiIGhlaWdodD0iNTgiIHJ4PSIxMCIgZmlsbD0iIzJmN2Y3OSIgb3BhY2l0eT0iLjE4Ii8+PHJlY3QgeD0iMzI4IiB5PSIxMTYiIHdpZHRoPSI1MCIgaGVpZ2h0PSI4IiByeD0iNCIgZmlsbD0iIzJmN2Y3OSIvPjxyZWN0IHg9IjMyOCIgeT0iMTMyIiB3aWR0aD0iNzYiIGhlaWdodD0iMTQiIHJ4PSI1IiBmaWxsPSIjMWQ0ZjZlIi8+PHJlY3QgeD0iNDM0IiB5PSIxMDAiIHdpZHRoPSIxMDYiIGhlaWdodD0iNTgiIHJ4PSIxMCIgZmlsbD0iIzJmN2Y3OSIgb3BhY2l0eT0iLjE4Ii8+PHJlY3QgeD0iNDQ2IiB5PSIxMTYiIHdpZHRoPSI1MCIgaGVpZ2h0PSI4IiByeD0iNCIgZmlsbD0iIzJmN2Y3OSIvPjxyZWN0IHg9IjQ0NiIgeT0iMTMyIiB3aWR0aD0iNzYiIGhlaWdodD0iMTQiIHJ4PSI1IiBmaWxsPSIjMWQ0ZjZlIi8+PHJlY3QgeD0iMjA0IiB5PSIyNzAiIHdpZHRoPSIzOCIgaGVpZ2h0PSI2MCIgcng9IjgiIGZpbGw9IiMxZDRmNmUiLz48cmVjdCB4PSIyNjIiIHk9IjIzMCIgd2lkdGg9IjM4IiBoZWlnaHQ9IjEwMCIgcng9IjgiIGZpbGw9IiMyZjdmNzkiLz48cmVjdCB4PSIzMjAiIHk9IjI1MiIgd2lkdGg9IjM4IiBoZWlnaHQ9Ijc4IiByeD0iOCIgZmlsbD0iIzFkNGY2ZSIvPjxyZWN0IHg9IjM3OCIgeT0iMjAwIiB3aWR0aD0iMzgiIGhlaWdodD0iMTMwIiByeD0iOCIgZmlsbD0iIzJmN2Y3OSIvPjxyZWN0IHg9IjQzNiIgeT0iMjM0IiB3aWR0aD0iMzgiIGhlaWdodD0iOTYiIHJ4PSI4IiBmaWxsPSIjMWQ0ZjZlIi8+PHJlY3QgeD0iNDk0IiB5PSIxODAiIHdpZHRoPSIzOCIgaGVpZ2h0PSIxNTAiIHJ4PSI4IiBmaWxsPSIjMmY3Zjc5Ii8+PC9nPjwvc3ZnPg=="></div><div class="t"><h3>Project One</h3><p>A short description of what this project is and what you did.</p><span class="tag">Web · 2026</span><span class="show">Show project →</span></div></a>
+      <a class="work" href="#" style="text-decoration:none"><div class="thumb"><img alt="Project two" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNDAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNjMjhhM2MiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNlMDY2M2MiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48c3R5bGU+QGtleWZyYW1lcyBmezUwJXt0cmFuc2Zvcm06dHJhbnNsYXRlWSgtOHB4KX19Lnd7YW5pbWF0aW9uOmYgNXMgZWFzZS1pbi1vdXQgaW5maW5pdGV9PC9zdHlsZT48cmVjdCB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQwMCIgZmlsbD0idXJsKCNnKSIvPjxjaXJjbGUgY3g9IjU3MCIgY3k9IjUwIiByPSI5MCIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjEyIi8+PGNpcmNsZSBjeD0iNjAiIGN5PSIzNzAiIHI9IjcwIiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIuMTIiLz48ZyBjbGFzcz0idyI+PHJlY3QgeD0iODAiIHk9IjU1IiB3aWR0aD0iNDgwIiBoZWlnaHQ9IjI5MCIgcng9IjE2IiBmaWxsPSIjZmZmIi8+PHBhdGggZD0iTTgwIDcxYTE2IDE2IDAgMDExNi0xNmg0NDhhMTYgMTYgMCAwMTE2IDE2djE0SDgweiIgZmlsbD0iI2VlZjBmNCIvPjxjaXJjbGUgY3g9IjEwMiIgY3k9IjcwIiByPSI1IiBmaWxsPSIjZmY2YjZiIi8+PGNpcmNsZSBjeD0iMTIwIiBjeT0iNzAiIHI9IjUiIGZpbGw9IiNmZmQxNjYiLz48Y2lyY2xlIGN4PSIxMzgiIGN5PSI3MCIgcj0iNSIgZmlsbD0iIzRlY2I3MSIvPjxyZWN0IHg9IjEwNCIgeT0iMTE4IiB3aWR0aD0iMjEwIiBoZWlnaHQ9IjIwIiByeD0iMTAiIGZpbGw9IiMxYzI0MzMiLz48cmVjdCB4PSIxMDQiIHk9IjE0OCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIyMCIgcng9IjEwIiBmaWxsPSIjMWMyNDMzIi8+PHJlY3QgeD0iMTA0IiB5PSIxODQiIHdpZHRoPSIyMDAiIGhlaWdodD0iOSIgcng9IjQiIGZpbGw9IiNjOWNlZDgiLz48cmVjdCB4PSIxMDQiIHk9IjIwMiIgd2lkdGg9IjE3MCIgaGVpZ2h0PSI5IiByeD0iNCIgZmlsbD0iI2M5Y2VkOCIvPjxyZWN0IHg9IjEwNCIgeT0iMjM4IiB3aWR0aD0iMTE2IiBoZWlnaHQ9IjM2IiByeD0iMTgiIGZpbGw9IiNjMjhhM2MiLz48cmVjdCB4PSIzNDAiIHk9IjEwOCIgd2lkdGg9IjE5OCIgaGVpZ2h0PSIyMDAiIHJ4PSIxOCIgZmlsbD0idXJsKCNnKSIvPjxjaXJjbGUgY3g9IjQ0MCIgY3k9IjE5MCIgcj0iNDIiIGZpbGw9IiNmZmYiIG9wYWNpdHk9Ii44NSIvPjxyZWN0IHg9IjM2OCIgeT0iMjU4IiB3aWR0aD0iMTQyIiBoZWlnaHQ9IjEyIiByeD0iNiIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjYiLz48L2c+PC9zdmc+"></div><div class="t"><h3>Project Two</h3><p>Explain the problem you solved and the result you got.</p><span class="tag">Design · 2026</span><span class="show">Show project →</span></div></a>
+      <a class="work" href="#" style="text-decoration:none"><div class="thumb"><img alt="Project three" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNDAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM2YTVhY2QiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMyZjdmNzkiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48c3R5bGU+QGtleWZyYW1lcyBmezUwJXt0cmFuc2Zvcm06dHJhbnNsYXRlWSgtOHB4KX19Lnd7YW5pbWF0aW9uOmYgNXMgZWFzZS1pbi1vdXQgaW5maW5pdGV9PC9zdHlsZT48cmVjdCB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQwMCIgZmlsbD0idXJsKCNnKSIvPjxjaXJjbGUgY3g9IjU3MCIgY3k9IjUwIiByPSI5MCIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjEyIi8+PGNpcmNsZSBjeD0iNjAiIGN5PSIzNzAiIHI9IjcwIiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIuMTIiLz48ZyBjbGFzcz0idyI+PHJlY3QgeD0iMTcwIiB5PSI0MCIgd2lkdGg9IjE0MCIgaGVpZ2h0PSIyOTYiIHJ4PSIyNiIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMSIvPjxyZWN0IHg9IjIxOCIgeT0iNTAiIHdpZHRoPSI0NCIgaGVpZ2h0PSI3IiByeD0iMy41IiBmaWxsPSIjYzljZWQ4Ii8+PHJlY3QgeD0iMTg0IiB5PSI3NCIgd2lkdGg9IjExMiIgaGVpZ2h0PSI1NiIgcng9IjEyIiBmaWxsPSJ1cmwoI2cpIi8+PHJlY3QgeD0iMTg0IiB5PSIxNDQiIHdpZHRoPSIxMTIiIGhlaWdodD0iMzQiIHJ4PSIxMCIgZmlsbD0iIzZhNWFjZCIgb3BhY2l0eT0iLjE0Ii8+PGNpcmNsZSBjeD0iMjAyIiBjeT0iMTYxIiByPSI5IiBmaWxsPSIjMmY3Zjc5Ii8+PHJlY3QgeD0iMjE4IiB5PSIxNTciIHdpZHRoPSI2MCIgaGVpZ2h0PSI4IiByeD0iNCIgZmlsbD0iIzZhNWFjZCIgb3BhY2l0eT0iLjYiLz48cmVjdCB4PSIxODQiIHk9IjE4OCIgd2lkdGg9IjExMiIgaGVpZ2h0PSIzNCIgcng9IjEwIiBmaWxsPSIjNmE1YWNkIiBvcGFjaXR5PSIuMTQiLz48Y2lyY2xlIGN4PSIyMDIiIGN5PSIyMDUiIHI9IjkiIGZpbGw9IiMyZjdmNzkiLz48cmVjdCB4PSIyMTgiIHk9IjIwMSIgd2lkdGg9IjYwIiBoZWlnaHQ9IjgiIHJ4PSI0IiBmaWxsPSIjNmE1YWNkIiBvcGFjaXR5PSIuNiIvPjxyZWN0IHg9IjE4NCIgeT0iMjMyIiB3aWR0aD0iMTEyIiBoZWlnaHQ9IjM0IiByeD0iMTAiIGZpbGw9IiM2YTVhY2QiIG9wYWNpdHk9Ii4xNCIvPjxjaXJjbGUgY3g9IjIwMiIgY3k9IjI0OSIgcj0iOSIgZmlsbD0iIzJmN2Y3OSIvPjxyZWN0IHg9IjIxOCIgeT0iMjQ1IiB3aWR0aD0iNjAiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiM2YTVhY2QiIG9wYWNpdHk9Ii42Ii8+PHJlY3QgeD0iMTg0IiB5PSIyNzYiIHdpZHRoPSIxMTIiIGhlaWdodD0iMzQiIHJ4PSIxMCIgZmlsbD0iIzZhNWFjZCIgb3BhY2l0eT0iLjE0Ii8+PGNpcmNsZSBjeD0iMjAyIiBjeT0iMjkzIiByPSI5IiBmaWxsPSIjMmY3Zjc5Ii8+PHJlY3QgeD0iMjE4IiB5PSIyODkiIHdpZHRoPSI2MCIgaGVpZ2h0PSI4IiByeD0iNCIgZmlsbD0iIzZhNWFjZCIgb3BhY2l0eT0iLjYiLz48cmVjdCB4PSIzNDAiIHk9IjY0IiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjI5NiIgcng9IjI2IiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjkyIi8+PHJlY3QgeD0iMzg4IiB5PSI3NCIgd2lkdGg9IjQ0IiBoZWlnaHQ9IjciIHJ4PSIzLjUiIGZpbGw9IiNjOWNlZDgiLz48cmVjdCB4PSIzNTQiIHk9Ijk4IiB3aWR0aD0iMTEyIiBoZWlnaHQ9IjU2IiByeD0iMTIiIGZpbGw9InVybCgjZykiLz48cmVjdCB4PSIzNTQiIHk9IjE2OCIgd2lkdGg9IjExMiIgaGVpZ2h0PSIzNCIgcng9IjEwIiBmaWxsPSIjNmE1YWNkIiBvcGFjaXR5PSIuMTQiLz48Y2lyY2xlIGN4PSIzNzIiIGN5PSIxODUiIHI9IjkiIGZpbGw9IiMyZjdmNzkiLz48cmVjdCB4PSIzODgiIHk9IjE4MSIgd2lkdGg9IjYwIiBoZWlnaHQ9IjgiIHJ4PSI0IiBmaWxsPSIjNmE1YWNkIiBvcGFjaXR5PSIuNiIvPjxyZWN0IHg9IjM1NCIgeT0iMjEyIiB3aWR0aD0iMTEyIiBoZWlnaHQ9IjM0IiByeD0iMTAiIGZpbGw9IiM2YTVhY2QiIG9wYWNpdHk9Ii4xNCIvPjxjaXJjbGUgY3g9IjM3MiIgY3k9IjIyOSIgcj0iOSIgZmlsbD0iIzJmN2Y3OSIvPjxyZWN0IHg9IjM4OCIgeT0iMjI1IiB3aWR0aD0iNjAiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiM2YTVhY2QiIG9wYWNpdHk9Ii42Ii8+PHJlY3QgeD0iMzU0IiB5PSIyNTYiIHdpZHRoPSIxMTIiIGhlaWdodD0iMzQiIHJ4PSIxMCIgZmlsbD0iIzZhNWFjZCIgb3BhY2l0eT0iLjE0Ii8+PGNpcmNsZSBjeD0iMzcyIiBjeT0iMjczIiByPSI5IiBmaWxsPSIjMmY3Zjc5Ii8+PHJlY3QgeD0iMzg4IiB5PSIyNjkiIHdpZHRoPSI2MCIgaGVpZ2h0PSI4IiByeD0iNCIgZmlsbD0iIzZhNWFjZCIgb3BhY2l0eT0iLjYiLz48cmVjdCB4PSIzNTQiIHk9IjMwMCIgd2lkdGg9IjExMiIgaGVpZ2h0PSIzNCIgcng9IjEwIiBmaWxsPSIjNmE1YWNkIiBvcGFjaXR5PSIuMTQiLz48Y2lyY2xlIGN4PSIzNzIiIGN5PSIzMTciIHI9IjkiIGZpbGw9IiMyZjdmNzkiLz48cmVjdCB4PSIzODgiIHk9IjMxMyIgd2lkdGg9IjYwIiBoZWlnaHQ9IjgiIHJ4PSI0IiBmaWxsPSIjNmE1YWNkIiBvcGFjaXR5PSIuNiIvPjwvZz48L3N2Zz4="></div><div class="t"><h3>Project Three</h3><p>Mention the tools you used and what you learned.</p><span class="tag">App · 2025</span><span class="show">Show project →</span></div></a>
+      <a class="work" href="#" style="text-decoration:none"><div class="thumb"><img alt="Project four" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNDAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMxZDRmNmUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM1Y2MyYjgiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48c3R5bGU+QGtleWZyYW1lcyBmezUwJXt0cmFuc2Zvcm06dHJhbnNsYXRlWSgtOHB4KX19Lnd7YW5pbWF0aW9uOmYgNXMgZWFzZS1pbi1vdXQgaW5maW5pdGV9PC9zdHlsZT48cmVjdCB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQwMCIgZmlsbD0idXJsKCNnKSIvPjxjaXJjbGUgY3g9IjU3MCIgY3k9IjUwIiByPSI5MCIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjEyIi8+PGNpcmNsZSBjeD0iNjAiIGN5PSIzNzAiIHI9IjcwIiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIuMTIiLz48ZyBjbGFzcz0idyI+PHJlY3QgeD0iODAiIHk9IjU1IiB3aWR0aD0iNDgwIiBoZWlnaHQ9IjI5MCIgcng9IjE2IiBmaWxsPSIjZmZmIi8+PHBhdGggZD0iTTgwIDcxYTE2IDE2IDAgMDExNi0xNmg0NDhhMTYgMTYgMCAwMTE2IDE2djE0SDgweiIgZmlsbD0iI2VlZjBmNCIvPjxjaXJjbGUgY3g9IjEwMiIgY3k9IjcwIiByPSI1IiBmaWxsPSIjZmY2YjZiIi8+PGNpcmNsZSBjeD0iMTIwIiBjeT0iNzAiIHI9IjUiIGZpbGw9IiNmZmQxNjYiLz48Y2lyY2xlIGN4PSIxMzgiIGN5PSI3MCIgcj0iNSIgZmlsbD0iIzRlY2I3MSIvPjxyZWN0IHg9IjEwMCIgeT0iMTAwIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjgyIiByeD0iMTIiIGZpbGw9IiMxZDRmNmUiIG9wYWNpdHk9IjAuMTIiLz48Y2lyY2xlIGN4PSIxNzAiIGN5PSIxNDEiIHI9IjIyIiBmaWxsPSIjNWNjMmI4Ii8+PHJlY3QgeD0iMTAwIiB5PSIxOTAiIHdpZHRoPSI4NiIgaGVpZ2h0PSI4IiByeD0iNCIgZmlsbD0iIzFjMjQzMyIvPjxyZWN0IHg9IjEwMCIgeT0iMjA0IiB3aWR0aD0iNDYiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiMxZDRmNmUiLz48cmVjdCB4PSIyNTQiIHk9IjEwMCIgd2lkdGg9IjE0MCIgaGVpZ2h0PSI4MiIgcng9IjEyIiBmaWxsPSIjMWQ0ZjZlIiBvcGFjaXR5PSIwLjE5Ii8+PGNpcmNsZSBjeD0iMzI0IiBjeT0iMTQxIiByPSIyMiIgZmlsbD0iIzVjYzJiOCIvPjxyZWN0IHg9IjI1NCIgeT0iMTkwIiB3aWR0aD0iODYiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiMxYzI0MzMiLz48cmVjdCB4PSIyNTQiIHk9IjIwNCIgd2lkdGg9IjQ2IiBoZWlnaHQ9IjgiIHJ4PSI0IiBmaWxsPSIjMWQ0ZjZlIi8+PHJlY3QgeD0iNDA4IiB5PSIxMDAiIHdpZHRoPSIxNDAiIGhlaWdodD0iODIiIHJ4PSIxMiIgZmlsbD0iIzFkNGY2ZSIgb3BhY2l0eT0iMC4yNiIvPjxjaXJjbGUgY3g9IjQ3OCIgY3k9IjE0MSIgcj0iMjIiIGZpbGw9IiM1Y2MyYjgiLz48cmVjdCB4PSI0MDgiIHk9IjE5MCIgd2lkdGg9Ijg2IiBoZWlnaHQ9IjgiIHJ4PSI0IiBmaWxsPSIjMWMyNDMzIi8+PHJlY3QgeD0iNDA4IiB5PSIyMDQiIHdpZHRoPSI0NiIgaGVpZ2h0PSI4IiByeD0iNCIgZmlsbD0iIzFkNGY2ZSIvPjxyZWN0IHg9IjEwMCIgeT0iMjE4IiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjgyIiByeD0iMTIiIGZpbGw9IiMxZDRmNmUiIG9wYWNpdHk9IjAuMTkiLz48Y2lyY2xlIGN4PSIxNzAiIGN5PSIyNTkiIHI9IjIyIiBmaWxsPSIjNWNjMmI4Ii8+PHJlY3QgeD0iMTAwIiB5PSIzMDgiIHdpZHRoPSI4NiIgaGVpZ2h0PSI4IiByeD0iNCIgZmlsbD0iIzFjMjQzMyIvPjxyZWN0IHg9IjEwMCIgeT0iMzIyIiB3aWR0aD0iNDYiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiMxZDRmNmUiLz48cmVjdCB4PSIyNTQiIHk9IjIxOCIgd2lkdGg9IjE0MCIgaGVpZ2h0PSI4MiIgcng9IjEyIiBmaWxsPSIjMWQ0ZjZlIiBvcGFjaXR5PSIwLjI2Ii8+PGNpcmNsZSBjeD0iMzI0IiBjeT0iMjU5IiByPSIyMiIgZmlsbD0iIzVjYzJiOCIvPjxyZWN0IHg9IjI1NCIgeT0iMzA4IiB3aWR0aD0iODYiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiMxYzI0MzMiLz48cmVjdCB4PSIyNTQiIHk9IjMyMiIgd2lkdGg9IjQ2IiBoZWlnaHQ9IjgiIHJ4PSI0IiBmaWxsPSIjMWQ0ZjZlIi8+PHJlY3QgeD0iNDA4IiB5PSIyMTgiIHdpZHRoPSIxNDAiIGhlaWdodD0iODIiIHJ4PSIxMiIgZmlsbD0iIzFkNGY2ZSIgb3BhY2l0eT0iMC4xMiIvPjxjaXJjbGUgY3g9IjQ3OCIgY3k9IjI1OSIgcj0iMjIiIGZpbGw9IiM1Y2MyYjgiLz48cmVjdCB4PSI0MDgiIHk9IjMwOCIgd2lkdGg9Ijg2IiBoZWlnaHQ9IjgiIHJ4PSI0IiBmaWxsPSIjMWMyNDMzIi8+PHJlY3QgeD0iNDA4IiB5PSIzMjIiIHdpZHRoPSI0NiIgaGVpZ2h0PSI4IiByeD0iNCIgZmlsbD0iIzFkNGY2ZSIvPjwvZz48L3N2Zz4="></div><div class="t"><h3>Project Four</h3><p>Add a link to the live version or source code.</p><span class="tag">Web · 2025</span><span class="show">Show project →</span></div></a>
+      <a class="work" href="#" style="text-decoration:none"><div class="thumb"><img alt="Project five" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNDAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNjMjQxNWMiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNjMjhhM2MiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48c3R5bGU+QGtleWZyYW1lcyBmezUwJXt0cmFuc2Zvcm06dHJhbnNsYXRlWSgtOHB4KX19Lnd7YW5pbWF0aW9uOmYgNXMgZWFzZS1pbi1vdXQgaW5maW5pdGV9PC9zdHlsZT48cmVjdCB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQwMCIgZmlsbD0idXJsKCNnKSIvPjxjaXJjbGUgY3g9IjU3MCIgY3k9IjUwIiByPSI5MCIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjEyIi8+PGNpcmNsZSBjeD0iNjAiIGN5PSIzNzAiIHI9IjcwIiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIuMTIiLz48ZyBjbGFzcz0idyI+PGNpcmNsZSBjeD0iMzIwIiBjeT0iMTY4IiByPSI4OCIgZmlsbD0iI2ZmZiIvPjxwYXRoIGQ9Ik0zMjAgMTA4bDE4IDQwIDQ0IDUtMzMgMzAgMTAgNDQtMzktMjMtMzkgMjMgMTAtNDQtMzMtMzAgNDQtNXoiIGZpbGw9IiNjMjQxNWMiLz48cmVjdCB4PSIyMDgiIHk9IjI5MiIgd2lkdGg9IjU0IiBoZWlnaHQ9IjU0IiByeD0iMTQiIGZpbGw9IiNjMjQxNWMiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIzIi8+PHJlY3QgeD0iMjcyIiB5PSIyOTIiIHdpZHRoPSI1NCIgaGVpZ2h0PSI1NCIgcng9IjE0IiBmaWxsPSIjYzI4YTNjIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMyIvPjxyZWN0IHg9IjMzNiIgeT0iMjkyIiB3aWR0aD0iNTQiIGhlaWdodD0iNTQiIHJ4PSIxNCIgZmlsbD0iI2ZmZmZmZiIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSI0MDAiIHk9IjI5MiIgd2lkdGg9IjU0IiBoZWlnaHQ9IjU0IiByeD0iMTQiIGZpbGw9IiMxYzI0MzMiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIzIi8+PC9nPjwvc3ZnPg=="></div><div class="t"><h3>Project Five</h3><p>Describe who the project was for and why it mattered.</p><span class="tag">Branding · 2025</span><span class="show">Show project →</span></div></a>
+      <a class="work" href="#" style="text-decoration:none"><div class="thumb"><img alt="Project six" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNDAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMyYjNhNjciLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM2YTVhY2QiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48c3R5bGU+QGtleWZyYW1lcyBmezUwJXt0cmFuc2Zvcm06dHJhbnNsYXRlWSgtOHB4KX19Lnd7YW5pbWF0aW9uOmYgNXMgZWFzZS1pbi1vdXQgaW5maW5pdGV9PC9zdHlsZT48cmVjdCB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQwMCIgZmlsbD0idXJsKCNnKSIvPjxjaXJjbGUgY3g9IjU3MCIgY3k9IjUwIiByPSI5MCIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjEyIi8+PGNpcmNsZSBjeD0iNjAiIGN5PSIzNzAiIHI9IjcwIiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIuMTIiLz48ZyBjbGFzcz0idyI+PHJlY3QgeD0iODAiIHk9IjU1IiB3aWR0aD0iNDgwIiBoZWlnaHQ9IjI5MCIgcng9IjE2IiBmaWxsPSIjZmZmIi8+PHBhdGggZD0iTTgwIDcxYTE2IDE2IDAgMDExNi0xNmg0NDhhMTYgMTYgMCAwMTE2IDE2djE0SDgweiIgZmlsbD0iI2VlZjBmNCIvPjxjaXJjbGUgY3g9IjEwMiIgY3k9IjcwIiByPSI1IiBmaWxsPSIjZmY2YjZiIi8+PGNpcmNsZSBjeD0iMTIwIiBjeT0iNzAiIHI9IjUiIGZpbGw9IiNmZmQxNjYiLz48Y2lyY2xlIGN4PSIxMzgiIGN5PSI3MCIgcj0iNSIgZmlsbD0iIzRlY2I3MSIvPjxjaXJjbGUgY3g9IjE1MCIgY3k9IjE1MCIgcj0iMzYiIGZpbGw9IiM2YTVhY2QiLz48cmVjdCB4PSIyMDQiIHk9IjEyNCIgd2lkdGg9IjIwMCIgaGVpZ2h0PSIxOCIgcng9IjkiIGZpbGw9IiMxYzI0MzMiLz48cmVjdCB4PSIyMDQiIHk9IjE1MiIgd2lkdGg9IjI4MCIgaGVpZ2h0PSI5IiByeD0iNCIgZmlsbD0iI2M5Y2VkOCIvPjxyZWN0IHg9IjIwNCIgeT0iMTcwIiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjkiIHJ4PSI0IiBmaWxsPSIjYzljZWQ4Ii8+PHJlY3QgeD0iMTAwIiB5PSIyMjYiIHdpZHRoPSIxNDAiIGhlaWdodD0iMTAwIiByeD0iMTIiIGZpbGw9IiMyYjNhNjciIG9wYWNpdHk9IjAuMTQiLz48cmVjdCB4PSIxMTQiIHk9IjMwMCIgd2lkdGg9IjcwIiBoZWlnaHQ9IjgiIHJ4PSI0IiBmaWxsPSIjMmIzYTY3Ii8+PHJlY3QgeD0iMjU0IiB5PSIyMjYiIHdpZHRoPSIxNDAiIGhlaWdodD0iMTAwIiByeD0iMTIiIGZpbGw9IiMyYjNhNjciIG9wYWNpdHk9IjAuMjQwMDAwMDAwMDAwMDAwMDIiLz48cmVjdCB4PSIyNjgiIHk9IjMwMCIgd2lkdGg9IjcwIiBoZWlnaHQ9IjgiIHJ4PSI0IiBmaWxsPSIjMmIzYTY3Ii8+PHJlY3QgeD0iNDA4IiB5PSIyMjYiIHdpZHRoPSIxNDAiIGhlaWdodD0iMTAwIiByeD0iMTIiIGZpbGw9IiMyYjNhNjciIG9wYWNpdHk9IjAuMzQiLz48cmVjdCB4PSI0MjIiIHk9IjMwMCIgd2lkdGg9IjcwIiBoZWlnaHQ9IjgiIHJ4PSI0IiBmaWxsPSIjMmIzYTY3Ii8+PC9nPjwvc3ZnPg=="></div><div class="t"><h3>Project Six</h3><p>Keep it to one or two sentences.</p><span class="tag">Web · 2024</span><span class="show">Show project →</span></div></a>
     </div></div>
     <div class="ctl">
   <button class="nbtn" type="button" data-prev aria-label="Previous slide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
@@ -407,7 +461,7 @@ footer{text-align:center;padding:30px 0;color:var(--muted);font-size:.92rem;bord
 <section class="contact" id="contact" style="background:var(--bg)">
   <div class="wrap contact-grid">
     <div class="reveal info">
-      <h2>Contact us</h2>
+      <h2>Contact me</h2>
       <p class="lead" style="margin-bottom:20px">Have a project or an idea? Send a message and I'll reply soon.</p>
       <!-- EDIT: your real email and social links -->
       <div class="clock">
@@ -431,7 +485,7 @@ footer{text-align:center;padding:30px 0;color:var(--muted);font-size:.92rem;bord
 </section>
 
 <!-- ========== FOOTER ========== -->
-<footer>© 2026 Abbas K. All rights reserved.</footer>
+<footer>© 2026 Abbas Kehar. All rights reserved.</footer>
 
 <script>
 /* ===== SETTINGS: EDIT THESE ===== */
@@ -639,6 +693,58 @@ function tick(){
   setTimeout(tick,1000-now.getMilliseconds());
 }
 tick();
+})();
+</script>
+<dialog class="pm" id="pm" aria-labelledby="pmT">
+  <button class="pm-x" type="button" id="pmX" aria-label="Close project">✕</button>
+  <img id="pmI" alt="">
+  <div class="pm-b">
+    <span class="tag" id="pmG"></span>
+    <h3 id="pmT"></h3>
+    <p id="pmD"></p>
+    <a class="btn primary" id="pmL" href="#" target="_blank" rel="noopener" hidden>Visit project</a>
+  </div>
+</dialog>
+
+<script>
+/* ===== Show project: click a card to open its details ===== */
+/* EDIT: to add a live link for a project, set data-link="https://..." on its <a class="work"> card. */
+(function(){
+const dlg=document.getElementById('pm'),$=id=>document.getElementById(id);
+document.querySelectorAll('.work').forEach(card=>{
+  card.addEventListener('click',e=>{
+    e.preventDefault();
+    $('pmI').src=card.querySelector('img').src;
+    $('pmI').alt=card.querySelector('img').alt;
+    $('pmT').textContent=card.querySelector('h3').textContent;
+    $('pmD').textContent=card.querySelector('p').textContent;
+    $('pmG').textContent=card.querySelector('.tag').textContent;
+    const l=$('pmL'),u=card.dataset.link;
+    l.hidden=!u; if(u) l.href=u;
+    dlg.showModal();
+  });
+});
+$('pmX').onclick=()=>dlg.close();
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+})();
+</script>
+<script>
+/* ===== Upgrade: scroll bar, cursor glow, 3D tilt, back-to-top ===== */
+(function(){
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+const bar=document.getElementById('prog'),up=document.getElementById('toTop');
+function sc(){const h=document.documentElement.scrollHeight-innerHeight;bar.style.transform='scaleX('+(h>0?scrollY/h:0)+')';up.classList.toggle('vis',scrollY>700)}
+addEventListener('scroll',sc,{passive:true});sc();
+up.onclick=()=>scrollTo({top:0,behavior:reduce?'auto':'smooth'});
+if(!fine||reduce)return;
+const g=document.getElementById('glow');
+addEventListener('pointermove',e=>{g.style.transform='translate('+(e.clientX-210)+'px,'+(e.clientY-210)+'px)';g.style.opacity=1},{passive:true});
+document.documentElement.addEventListener('mouseleave',()=>g.style.opacity=0);
+document.querySelectorAll('.work,.card').forEach(el=>{
+  el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    el.classList.add('tilting');el.style.setProperty('--ry',x*10+'deg');el.style.setProperty('--rx',-y*10+'deg')});
+  el.addEventListener('pointerleave',()=>{el.classList.remove('tilting');el.style.removeProperty('--rx');el.style.removeProperty('--ry')});
+});
 })();
 </script>
 </body>
